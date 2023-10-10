@@ -6,14 +6,24 @@ import { Tab1Page } from './tab1.page';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 
 import { Tab1PageRoutingModule } from './tab1-routing.module';
+import { Routes } from '@angular/router';
+import { HighchartsChartModule } from 'highcharts-angular';
+const routes: Routes = [  
+  {  
+    path: '',  
+    component: Tab1Page  
+  }  
+];  
 
 @NgModule({
   imports: [
     IonicModule,
     CommonModule,
+    HighchartsChartModule,
     FormsModule,
     ExploreContainerComponentModule,
-    Tab1PageRoutingModule
+    Tab1PageRoutingModule,
+    
   ],
   declarations: [Tab1Page]
 })
