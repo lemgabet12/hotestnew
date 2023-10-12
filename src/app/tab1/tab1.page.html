@@ -9,47 +9,49 @@
     <ion-item [button]="true">
       <i class="fa-solid fa-house" color="primary" color="warning" slot="start" name="list-circle" size="large"></i>
       <ion-label>Taux d'occup</ion-label>
-      <ion-note slot="end">21.23%</ion-note>
+      <ion-note slot="end">{{ HotelData.imdbRating }} %</ion-note>
     </ion-item>
     <ion-item [button]="true">
       <i class="fa-solid fa-user-group" color="warning" slot="start" name="list-circle" size="large"></i>
       <ion-label>Clients présents</ion-label>
-      <ion-note slot="end">70</ion-note>
+      <ion-note slot="end">{{ HotelData.imdbVotes}}</ion-note>
     </ion-item>
     <ion-item [button]="true">
       <i class="fa-solid fa-user-plus" color="warning" slot="start" name="list-circle" size="large"></i>
       <ion-label>Arrivées Effectués</ion-label>
-      <ion-note slot="end">4</ion-note>
+      <ion-note slot="end">{{ HotelData.Released}}</ion-note>
     </ion-item>
     <ion-item [button]="true">
       <i class="fa-solid fa-user-plus" color="warning" slot="start" name="list-circle" size="large"></i>
       <ion-label>Départs Effectués</ion-label>
-      <ion-note slot="end">17</ion-note>
+      <ion-note slot="end">{{HotelData.Runtime}}</ion-note>
     </ion-item>
     <ion-item [button]="true">
       <i class="fa-solid fa-right-from-bracket" slot="start" name="list-circle" size="large"></i>
       <ion-label>Arrivés Prévues</ion-label>
-      <ion-note slot="end">78</ion-note>
+      <ion-note slot="end">{{ HotelData.Year}}</ion-note>
     </ion-item>
     <ion-item [button]="true">
-      <i class="fa-solid fa-right-from-bracket"></i>
+      <i class="fa-solid fa-right-from-bracket" slot="start" name="list-circle" size="large"></i>
       <ion-label>Départs Prévues</ion-label>
-      <ion-note slot="end">17</ion-note>
+      <ion-note slot="end">{{ HotelData.DVD}}</ion-note>
     </ion-item>
     <ion-item [button]="true">
       <i class="fa-solid fa-bed" color="warning" slot="start" name="list-circle" size="large"></i>
       <ion-label>chb. Occupées</ion-label>
-      <ion-note slot="end">45</ion-note>
+      <ion-note slot="end">{{HotelData.Metascore}}</ion-note>
     </ion-item>
     <ion-item [button]="true">
-      <i class="fa-solid fa-trophy"></i>
+      <i class="fa-solid fa-trophy" slot="start" name="list-circle" size="large"></i>
       <ion-label>Chambres Dispo</ion-label>
       <ion-note slot="end">127</ion-note>
     </ion-item>
   </ion-list>
 
  
-  <button><i id="example" class="fa-solid fa-sort-down" style="height: 20%;"></i></button>
-  <ion-content class="display-none" id="container" style="display: block;">
+  <ion-card>
+    <ion-card-content>
+      <canvas id="myChart" width="400" height="400"></canvas>
+    </ion-card-content>
+  </ion-card>
   </ion-content>
-</ion-content>
