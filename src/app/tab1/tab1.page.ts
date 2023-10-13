@@ -24,6 +24,8 @@ export class Tab1Page {
 
   
 constructor( private http: HttpClient){
+  public PtagClicked: boolean = true;
+items: any;
 
   this.movieApiUrl = 'https://www.omdbapi.com/?i=tt3896198&apikey=ffb23b0';
 this.readAPI(this.movieApiUrl)
@@ -72,6 +74,18 @@ this.readAPI(this.movieApiUrl)
       },
     });
   }
+  public onPtagClick() {         
+    {        
+     this.PtagClicked = !this.PtagClicked;          
+    }           
+  }
+ public onPtagClick1() {
+   {            
+    this.PtagClicked = true;   
+
+    }           
+  }
+
 }
 
    

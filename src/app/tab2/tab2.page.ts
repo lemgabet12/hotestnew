@@ -9,6 +9,12 @@ import  Chart from 'chart.js/auto';
   styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page {
+<<<<<<< Updated upstream
+=======
+
+
+
+>>>>>>> Stashed changes
 
   constructor() {
 
