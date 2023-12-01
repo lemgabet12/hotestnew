@@ -1,4 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, ViewChild } from '@angular/core';
+import  Chart from 'chart.js/auto';
+import { ChartService } from '../services/chart.service';
 
 
 
@@ -8,53 +11,82 @@ import { Component, ViewChild } from '@angular/core';
   styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page {
-  googleChartLibrary: any;
-
-
-
-
-
-
-  constructor() {
-
-  }
+  ResidentApiUrl: any;
+  ResidentDataAsArray:any[]=[ ]
+  RockData = {
+    toto: '',
+    totd: '',
+    totl: '',
+    toths : '',
+    totlp :'',
+    totr : '',
+    totrr : '',
+    
+  };
   ngOnInit() {
-    this.useVanillaJSLibrary();
+    this.readAPI(this.ResidentApiUrl)
+    .subscribe((data) => {
+      console.log(data)
+      this.RockData.toto = data.toto;  
+    this.RockData.totd = data.totd ;
+    this.RockData.toths = data.toths;
+    this.RockData.totlp = data.totlp;
+    this.RockData.totr = data.totr;
+    this.RockData.totl = data.totl;
+    this.RockData.totrr = data.totrr; 
+    this.RockData.totrr = data.totrr;  
+       console.log(this.RockData)
+    
+    this.createChartA(this.RockData);
+    
+    })
   }
-  useVanillaJSLibrary() {
-    this.googleChartLibrary = (<any>window).google;
-    // Load the Visualization API and the corechart package.
-    this.googleChartLibrary.charts.load('current', { 'packages': ['corechart'] });
+  constructor(private http: HttpClient , private Resident: ChartService) {
+    this.ResidentApiUrl = 'http://localhost:8080/hotel/countRack';
+  }
 
-    // Set a callback to run when the Google Visualization API is loaded.
-    this.googleChartLibrary.charts.setOnLoadCallback(this.drawChart.bind(this));
-  }
   // Callback that creates and populates a data table,
   // instantiates the pie chart, passes in the data and
   // draws it.
-  drawChart () {
-    // Create the data table.
-    var data = new this.googleChartLibrary.visualization.DataTable();
-    data.addColumn('string', 'Activity Name');
-    data.addColumn('number', 'Hours');
-    data.addRows([
-      ['Départs Effectués', 8],
-      ['Arrivées Effectués', 8],
-      ['Arrivés Prévues', 2],
-      ['Départs Prévues', 2],
-      ['chb. Occupées', 2],
-      ['Chambres Dispo', 2]
-    ]);
+  readAPI(URL: string) {
+    return this.http.get<any>(URL);
+  }
 
-    // Instantiate and draw our chart, passing in some options.
-    var chart = new this.googleChartLibrary.visualization
-      .PieChart(document.getElementById('pie-chart-div'));
+  
+  createChartA(Resident :any) {
+    this.ResidentDataAsArray.push(Resident.totd );
+    this.ResidentDataAsArray.push(Resident.toths);
+    this.ResidentDataAsArray.push(Resident.totl);
+    this.ResidentDataAsArray.push(Resident.totlp);
+    this.ResidentDataAsArray.push(Resident.totr);
+    this.ResidentDataAsArray.push(Resident.totlp);
+    this.ResidentDataAsArray.push(Resident.totrr);
+    
+    var ctx = (<any>document.getElementById('canvas-chart')).getContext('2d');
+    var chart = new Chart(ctx, {
+        // The type of chart we want to create
+        type: 'pie',
 
-    chart.draw(data, {
-      'title': 'Activities',
-      'width': 400,
-      'height': 500,
-      'padding': 500
+        // The data for our dataset
+        data: {
+            labels: ["TD", "CP", "AE", "DE", "AP", "DP", "CO", "CD"],
+            datasets: [{
+              label: "Hotest",
+             
+              borderColor: [
+                'blue',
+                'black',
+                'red',
+                'yellow',
+                'orange',
+                'indigo',
+                'pnik',
+                'olive'
+              ],
+              data: this.ResidentDataAsArray,
+              borderWidth: 1
+            }]
+       }
     });
   }
 }

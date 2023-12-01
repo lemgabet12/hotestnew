@@ -1,55 +1,55 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Hotest</ion-title>
-  </ion-toolbar>
-  <p>L'état de Hotel</p>
-</ion-header>
+
 <ion-content color="light">
+  <ion-toolbar color="primary">
+  <p style="size :20px , margin-left = 2%">L'état de Hotel</p>
+</ion-toolbar>
   <ion-list [inset]="true">
-    <ion-item [button]="true">
-      <i class="fa-solid fa-house" color="primary" color="warning" slot="start" name="list-circle" size="large"></i>
+    <ion-item >
+      <img src="\assets\icon\house-solid.svg" alt="home" color="primary" style="width: 5%; height:5%;" color="warning" slot="start" name="list-circle" size="large">
       <ion-label>Taux d'occup</ion-label>
-      <ion-note slot="end">21.23%</ion-note>
+      <ion-note slot="end">{{ RockData.s}}%</ion-note>
     </ion-item>
-    <ion-item [button]="true">
-      <i class="fa-solid fa-user-group" color="warning" slot="start" name="list-circle" size="large"></i>
+    <ion-item >
+      <img src="\assets\icon\user-group-solid.svg" alt="home" color="primary" style="width: 5%; height: 5%;" color="warning" slot="start" name="list-circle" size="large">
       <ion-label>Clients présents</ion-label>
-      <ion-note slot="end">70</ion-note>
+      <ion-note slot="end">{{ RockData.totlp}}</ion-note>
     </ion-item>
-    <ion-item [button]="true">
-      <i class="fa-solid fa-user-plus" color="warning" slot="start" name="list-circle" size="large"></i>
+    <ion-item >
+      <img src="\assets\icon\user-plus-solid.svg" alt="home" color="primary" style="width: 5%; height: 5%;" color="warning" slot="start" name="list-circle" size="large">
       <ion-label>Arrivées Effectués</ion-label>
-      <ion-note slot="end">4</ion-note>
+      <ion-note slot="end">{{ RockData.totcham}}</ion-note>
     </ion-item>
-    <ion-item [button]="true">
-      <i class="fa-solid fa-user-plus" color="warning" slot="start" name="list-circle" size="large"></i>
-      <ion-label>Départs Effectués</ion-label>
-      <ion-note slot="end">17</ion-note>
+    <ion-item >
+      <img src="\assets\icon\user-xmark-solid.svg" alt="home" color="primary" style="width: 5%; height: 5%;" color="warning" slot="start" name="list-circle" size="large">
+      <ion-label>Departs Effectués</ion-label>
+      <ion-note slot="end">{{ RockData.dep}}</ion-note>
     </ion-item>
-    <ion-item [button]="true">
-      <i class="fa-solid fa-right-from-bracket" slot="start" name="list-circle" size="large"></i>
+    <ion-item >
+      <img src="\assets\icon\arrow-right-to-bracket-solid.svg" alt="home" color="primary" style="width: 5%; height: 5%;" color="warning" slot="start" name="list-circle" size="large">
       <ion-label>Arrivés Prévues</ion-label>
-      <ion-note slot="end">78</ion-note>
+      <ion-note slot="end">{{ RockData.arr}}</ion-note>
     </ion-item>
-    <ion-item [button]="true">
-      <i class="fa-solid fa-right-from-bracket"></i>
+    <ion-item >
+      <img src="\assets\icon\arrow-right-from-bracket-solid.svg" alt="home" color="primary" style="width: 5%; height: 5%;" color="warning" slot="start" name="list-circle" size="large">
       <ion-label>Départs Prévues</ion-label>
-      <ion-note slot="end">17</ion-note>
+      <ion-note slot="end">{{RockData.dep}}</ion-note>
     </ion-item>
-    <ion-item [button]="true">
-      <i class="fa-solid fa-bed" color="warning" slot="start" name="list-circle" size="large"></i>
+    <ion-item >
+      <img src="\assets\icon\bed-solid.svg" alt="home" color="primary" style="width: 5%; height: 5%;" color="warning" slot="start" name="list-circle" size="large">
       <ion-label>chb. Occupées</ion-label>
-      <ion-note slot="end">45</ion-note>
+      <ion-note slot="end">{{RockData.toto}}</ion-note>
     </ion-item>
-    <ion-item [button]="true">
-      <i class="fa-solid fa-trophy"></i>
+    <ion-item >
+      <img src="\assets\icon\trophy-solid.svg" alt="home" color="primary" style="width: 5%; height: 5%;" color="warning" slot="start" name="list-circle" size="large">
       <ion-label>Chambres Dispo</ion-label>
-      <ion-note slot="end">127</ion-note>
+      <ion-note slot="end">{{RockData.sum}}</ion-note>
     </ion-item>
   </ion-list>
-
- 
-  <button><i id="example" class="fa-solid fa-sort-down" style="height: 20%;"></i></button>
-  <ion-content class="display-none" id="container" style="display: block;">
+  <ion-content>
+    <button (click)="onclick()" type="button" >{{ShowMore?"Show More":"Show Less"}}</button>
+      <div *ngIf="visible">
+    <canvas id="myChart" ></canvas>
+    </div>
   </ion-content>
-</ion-content>
+  </ion-content>
+
