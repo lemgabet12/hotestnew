@@ -6,8 +6,9 @@ import { MenuController } from '@ionic/angular';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
+
 openPage(arg0: string) {
- 
+
   this.menu.close(); // Close the menu
   // Add navigation logic here
   // For example, navigate to the selected page

@@ -2,7 +2,6 @@ import { ChartService } from './../services/chart.service';
 import { Component } from '@angular/core';
 import { Chart } from 'chart.js';
 import { HttpClient } from '@angular/common/http';
-import { Data } from '@angular/router';
 
 @Component({
   selector: 'app-tab1',
@@ -12,7 +11,6 @@ import { Data } from '@angular/router';
 
 export class Tab1Page {
   chart: any;
-  data: Data[] = [];
   ResidentApiUrl = '';
   ResidentDataAsArray: any[] = []
   RockData = {
@@ -39,7 +37,7 @@ export class Tab1Page {
 
   ngOnInit() {
     this.readAPI(this.ResidentApiUrl)
-      .subscribe((data: { lib: string; toto: string; totrr: string; toths: string; sum: string; chd: string; totlp: string; totr: string; arr: string; nbo: string; to: string; dep: string; s: string; r: string; totcham: string }) => {
+      .subscribe((data) => {
         this.RockData.lib = data.lib;
         this.RockData.toto = data.toto;
         this.RockData.totrr = data.totrr;

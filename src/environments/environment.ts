@@ -4,8 +4,9 @@
 
 export const environment = {
   production : false,
-   apiurl : 'http://196.234.125.66:8104',
+   apiurl : 'http://196.234.125.66:3084',
    EnableDebug : false,
+
 
 };
 

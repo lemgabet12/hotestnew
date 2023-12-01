@@ -5,8 +5,11 @@ const config: CapacitorConfig = {
   appName: 'XliaMob',
   webDir: 'www',
   server: {
-    androidScheme: 'https'
-  }
+    androidScheme: 'http',
+  },
+  android: {
+    allowMixedContent: true,
+  },
 };
 
 export default config;
